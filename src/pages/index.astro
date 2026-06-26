@@ -1,0 +1,307 @@
+---
+import { getEntry } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const page = await getEntry('pages', 'home');
+
+const title = page?.data.title ?? "aispherevision.com — Premium AI Domain For Sale";
+const description = page?.data.description ?? "AI has shaped our view of the world, raising new questions and new ideas to evaluate. Secure this evocative domain.";
+const image = page?.data.image;
+const publishedDate = page?.data.publishedDate;
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={image}
+  canonicalURL="https://aispherevision.com/"
+  publishedDate={publishedDate}
+>
+  <!-- Hero Section -->
+  <section
+    id="hero"
+    class="hero-bg relative min-h-[100dvh] flex items-center pt-20"
+    style={`background-image: linear-gradient(rgba(10, 10, 15, 0.65), rgba(10, 10, 15, 0.75)), url('${image}');`}
+  >
+    <div class="max-w-5xl mx-auto px-6 pb-16 pt-12 md:pt-8 text-center relative z-10">
+      <!-- Premium Badge -->
+      <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 mb-8">
+        <div class="w-1.5 h-1.5 bg-accent-cyan rounded-full animate-pulse"></div>
+        <span class="text-xs font-semibold tracking-[1.5px] text-white/80">PREMIUM .COM DOMAIN</span>
+      </div>
+
+      <!-- Domain Name -->
+      <h1 class="domain-text mb-4" style="font-family: 'Space Grotesk', sans-serif;">
+        aispherevision.com
+      </h1>
+
+      <!-- Tagline -->
+      <p class="max-w-2xl mx-auto text-2xl md:text-3xl font-light tracking-tight text-white/90 mb-4">
+        AI has shaped our view of the world,<br class="hidden md:block" /> raising new questions to be answered<br class="hidden md:block" /> and new ideas to evaluate.
+      </p>
+
+      <p class="max-w-lg mx-auto text-lg text-white/60 mb-10">
+        A powerful, evocative domain for those building the future of artificial intelligence and human foresight.
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+           class="cta-primary text-lg no-underline">
+          <span>Secure This Vision</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
+          </svg>
+        </a>
+        <a href="#vision"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 px-8 py-4 text-lg font-medium rounded-3xl border border-white/20 hover:bg-white/5 transition-colors text-white no-underline">
+          Explore the Meaning
+        </a>
+      </div>
+
+      <div class="mt-12 flex items-center justify-center gap-x-8 text-xs text-white/50">
+        <div class="flex items-center gap-x-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7" />
+          </svg>
+          <span>Instant Transfer</span>
+        </div>
+        <div>Escrow Protected</div>
+        <div>Premium Asset</div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block">
+      <div class="flex flex-col items-center gap-y-1 text-[10px] tracking-widest text-white/40">
+        <div>SCROLL TO BEGIN</div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Vision Section -->
+  <section id="vision" class="max-w-5xl mx-auto px-6 pt-20 pb-16">
+    <div class="grid md:grid-cols-12 gap-x-12 items-center">
+      <!-- Left content -->
+      <div class="md:col-span-7">
+        <div class="inline-block px-3.5 py-1 rounded-full bg-white/5 text-xs tracking-[1.5px] font-medium text-white/60 mb-4">THE NAME</div>
+
+        <h2 class="section-heading tracking-[-0.04em] leading-none mb-7 text-white">
+          A name that<br />embodies the<br />AI era.
+        </h2>
+
+        <div class="space-y-6 text-brand-300 text-lg leading-relaxed max-w-[42ch]">
+          <p>
+            <span class="font-medium text-white">"Sphere"</span> represents the all-encompassing, global reach of artificial intelligence — a technology no longer confined to labs or screens, but woven into the fabric of society, industry, and human experience.
+          </p>
+          <p>
+            <span class="font-medium text-white">"Vision"</span> speaks to foresight, clarity, and the profound capacity to imagine what comes next. It is both the lens through which we interpret an AI-transformed world and the creative force required to shape it responsibly.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right visual / orb -->
+      <div class="md:col-span-5 mt-10 md:mt-0">
+        <div class="glass rounded-3xl p-8 md:p-10 relative overflow-hidden">
+          <div class="flex justify-center">
+            <div class="sphere-orb w-48 h-48 md:w-56 md:h-56 rounded-full bg-gradient-to-br from-accent-cyan/10 via-accent-violet/10 to-transparent border border-white/20 flex items-center justify-center">
+              <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-accent-cyan to-accent-violet opacity-90 flex items-center justify-center shadow-2xl shadow-accent-violet/50">
+                <div class="text-center">
+                  <div class="text-brand-950 text-[13px] font-bold tracking-[3px]">AI</div>
+                  <div class="text-brand-950 text-4xl font-black tracking-tighter -mt-1" style="font-family: 'Space Grotesk', sans-serif;">SPHERE</div>
+                  <div class="text-brand-950 text-xs font-medium tracking-widest">VISION</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-8">
+            <p class="text-sm text-white/60">A domain that feels inevitable.<br />Because the future needs a name.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why This Domain Section -->
+  <section id="why" class="bg-white/5 border-y border-white/10 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <div class="inline-block px-4 py-1 rounded-full bg-white/5 text-xs tracking-[1.5px] font-medium text-white/60 mb-3">WHY THIS DOMAIN</div>
+        <h2 class="section-heading tracking-[-0.03em] text-white">Built for the leaders of the AI age.</h2>
+        <p class="mt-4 max-w-md mx-auto text-white/60">More than a URL — a statement of intent and capability.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <!-- Card 1 -->
+        <div class="modern-card glass rounded-3xl p-8 border border-white/10">
+          <div class="w-11 h-11 rounded-2xl bg-accent-cyan/10 flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl tracking-tight text-white mb-3">Instant Authority</h3>
+          <p class="text-white/70 leading-relaxed">The name signals deep expertise and forward-thinking positioning the moment someone lands on it. In AI, where trust and vision matter most, this domain does the heavy lifting.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="modern-card glass rounded-3xl p-8 border border-white/10">
+          <div class="w-11 h-11 rounded-2xl bg-accent-violet/10 flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-accent-violet" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17.684a4.002 4.002 0 01-7.326 0M9.663 17.684L12 21m-2.337-3.316l.663-1.316M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a4.002 4.002 0 01-7.326 0" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl tracking-tight text-white mb-3">Memorable &amp; Brandable</h3>
+          <p class="text-white/70 leading-relaxed">Short enough to be powerful, descriptive enough to be meaningful. "AI Sphere Vision" is intuitive to spell, easy to remember, and carries poetic weight that generic names lack.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="modern-card glass rounded-3xl p-8 border border-white/10">
+          <div class="w-11 h-11 rounded-2xl bg-emerald/10 flex items-center justify-center mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+          </div>
+          <h3 class="font-semibold text-xl tracking-tight text-white mb-3">Future-Proof Value</h3>
+          <p class="text-white/70 leading-relaxed">AI is not a passing trend — it is the defining infrastructure of the 21st century. Owning a domain that so elegantly captures its essence positions you for long-term relevance and appreciation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Opportunity / Use Cases -->
+  <section id="opportunity" class="max-w-6xl mx-auto px-6 py-20">
+    <div class="max-w-2xl mb-12">
+      <div class="inline-block px-3.5 py-1 rounded-full bg-white/5 text-xs tracking-[1.5px] font-medium text-white/60 mb-4">THE OPPORTUNITY</div>
+      <h2 class="section-heading tracking-[-0.035em] leading-none text-white">Endless applications.<br />One perfect name.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="group p-7 rounded-3xl border border-white/10 hover:border-white/20 transition-colors bg-white/[0.015]">
+        <div class="font-mono text-xs tracking-widest text-accent-cyan mb-2">01</div>
+        <div class="font-semibold text-lg mb-2 text-white group-hover:text-accent-cyan transition-colors">AI Research &amp; Foresight Lab</div>
+        <p class="text-sm text-white/60">Home for a think tank or research collective exploring the philosophical, ethical, and strategic frontiers of artificial intelligence.</p>
+      </div>
+
+      <div class="group p-7 rounded-3xl border border-white/10 hover:border-white/20 transition-colors bg-white/[0.015]">
+        <div class="font-mono text-xs tracking-widest text-accent-cyan mb-2">02</div>
+        <div class="font-semibold text-lg mb-2 text-white group-hover:text-accent-cyan transition-colors">Computer Vision &amp; Spatial AI</div>
+        <p class="text-sm text-white/60">Ideal flagship domain for startups building next-generation vision systems, AR/VR platforms, autonomous systems, or multimodal models.</p>
+      </div>
+
+      <div class="group p-7 rounded-3xl border border-white/10 hover:border-white/20 transition-colors bg-white/[0.015]">
+        <div class="font-mono text-xs tracking-widest text-accent-cyan mb-2">03</div>
+        <div class="font-semibold text-lg mb-2 text-white group-hover:text-accent-cyan transition-colors">Strategic AI Consulting</div>
+        <p class="text-sm text-white/60">A sophisticated brand for advisory firms helping enterprises navigate AI transformation, governance, and long-term visioning.</p>
+      </div>
+
+      <div class="group p-7 rounded-3xl border border-white/10 hover:border-white/20 transition-colors bg-white/[0.015]">
+        <div class="font-mono text-xs tracking-widest text-accent-cyan mb-2">04</div>
+        <div class="font-semibold text-lg mb-2 text-white group-hover:text-accent-cyan transition-colors">Thought Leadership Platform</div>
+        <p class="text-sm text-white/60">Perfect for a premium publication, newsletter, podcast, or media brand focused on the deeper implications of AI on society and business.</p>
+      </div>
+
+      <div class="group p-7 rounded-3xl border border-white/10 hover:border-white/20 transition-colors bg-white/[0.015]">
+        <div class="font-mono text-xs tracking-widest text-accent-cyan mb-2">05</div>
+        <div class="font-semibold text-lg mb-2 text-white group-hover:text-accent-cyan transition-colors">Enterprise AI Solutions</div>
+        <p class="text-sm text-white/60">A credible home for SaaS platforms offering AI-powered strategic intelligence, scenario planning, or decision augmentation tools.</p>
+      </div>
+
+      <div class="group p-7 rounded-3xl border border-white/10 hover:border-white/20 transition-colors bg-white/[0.015]">
+        <div class="font-mono text-xs tracking-widest text-accent-cyan mb-2">06</div>
+        <div class="font-semibold text-lg mb-2 text-white group-hover:text-accent-cyan transition-colors">Personal Brand &amp; Thought Leadership</div>
+        <p class="text-sm text-white/60">For influential AI researchers, futurists, or executives building a lasting personal platform at the intersection of technology and vision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Poignant Closer -->
+  <div class="max-w-3xl mx-auto px-6 text-center py-8 border-y border-white/10">
+    <p class="text-2xl md:text-3xl font-light tracking-tight text-white/90">
+      Every transformative AI endeavor begins with a clear vision.<br />
+      <span class="font-medium text-white">This domain is that vision — named.</span>
+    </p>
+  </div>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="max-w-4xl mx-auto px-6 py-20">
+    <div class="text-center mb-10">
+      <div class="inline-block px-4 py-1 rounded-full bg-emerald/10 text-emerald text-xs tracking-[1.5px] font-semibold mb-4">ACQUISITION</div>
+      <h2 class="section-heading tracking-[-0.03em] text-white">A visionary investment.</h2>
+    </div>
+
+    <div class="glass rounded-3xl p-10 md:p-14 border border-white/10">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-y-8">
+        <div>
+          <div class="flex items-baseline gap-x-2">
+            <span class="text-7xl font-semibold tracking-tighter text-white">$8,888</span>
+            <span class="text-white/50 text-xl">USD</span>
+          </div>
+          <p class="mt-1 text-white/60">One-time acquisition • Full ownership transfer</p>
+
+          <div class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <div class="flex items-center gap-x-2 text-white/70">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Clean title, ready for transfer</span>
+            </div>
+            <div class="flex items-center gap-x-2 text-white/70">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Escrow.com protected transaction</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:text-right">
+          <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+             class="inline-flex w-full md:w-auto items-center justify-center px-10 py-4 rounded-3xl bg-white font-semibold text-brand-950 text-lg active:scale-[0.985] transition-all hover:bg-white/90 no-underline">
+            Begin Acquisition
+          </a>
+          <p class="text-xs text-white/50 mt-3 md:mt-2">Serious buyers only. Flexible terms available.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <p class="text-xs text-white/50 max-w-md mx-auto">
+        Premium .com domains aligned with transformative technologies like AI have demonstrated strong long-term value appreciation.
+        This asset is positioned for both immediate brand impact and future investment upside.
+      </p>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section class="max-w-3xl mx-auto px-6 pb-16 text-center">
+    <div class="glass rounded-3xl p-10 md:p-14 border border-accent-cyan/20">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-4" style="font-family: 'Space Grotesk', sans-serif;">
+        Ready to claim the vision?
+      </h2>
+      <p class="text-white/70 mb-8 max-w-md mx-auto">
+        Submit your inquiry below. We respond to all serious inquiries within 24 hours.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+           class="cta-primary no-underline">
+          <span>Inquire About Acquisition</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
+          </svg>
+        </a>
+      </div>
+      <p class="mt-6 text-xs text-white/50">Your information is kept confidential. We use secure escrow for all transactions.</p>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <div class="border-t border-white/10 py-5">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-y-3 text-xs text-white/50">
+      <div>Transactions secured via <span class="font-medium text-white/70">Escrow.com</span> • Premium domain brokerage</div>
+      <div>&copy; 2026 aispherevision.com • All rights reserved</div>
+    </div>
+  </div>
+</BaseLayout>

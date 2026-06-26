@@ -1,0 +1,330 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  publishedDate?: Date;
+}
+
+const {
+  title,
+  description,
+  image = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/b6e2b8be-832a-4a78-4c2f-05384bed6700/public',
+  canonicalURL = 'https://aispherevision.com/',
+  publishedDate = new Date(),
+} = Astro.props;
+
+const siteName = 'aispherevision.com';
+const siteURL = 'https://aispherevision.com';
+const ogImage = image;
+const currentYear = new Date().getFullYear();
+const dateFormatted = publishedDate.toISOString().split('T')[0];
+const dateDisplay = publishedDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'aispherevision.com — Premium AI Domain',
+  description: description,
+  image: ogImage,
+  url: siteURL,
+  brand: {
+    '@type': 'Brand',
+    name: 'aispherevision.com',
+  },
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: siteURL,
+    seller: {
+      '@type': 'Organization',
+      name: 'aispherevision.com',
+      email: 'sales@desertrich.com',
+    },
+  },
+  category: 'Domain Name',
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary Meta -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-site-verification" content="NaZlE55e_wvRJdpOMELh3MjAdrkl98ZhWYzCd6hsb20" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="aispherevision.com — Premium AI Domain For Sale" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="aispherevision.com — Premium AI Domain For Sale" />
+
+    <!-- Structured Data: JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}>
+    </script>
+
+    <!-- Favicon (Cloudflare Images CDN) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/b6e2b8be-832a-4a78-4c2f-05384bed6700/public" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/b6e2b8be-832a-4a78-4c2f-05384bed6700/public" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/b6e2b8be-832a-4a78-4c2f-05384bed6700/public" />
+
+    <!-- Preconnect to Cloudflare Images -->
+    <link rel="preconnect" href="https://imagedelivery.net" />
+    <link rel="dns-prefetch" href="https://imagedelivery.net" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  </head>
+
+  <body class="min-h-screen flex flex-col bg-brand-950 text-white">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo -->
+          <a href="/" class="flex items-center gap-x-3 no-underline">
+            <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-accent-cyan via-accent-violet to-accent-cyan p-px">
+              <div class="w-full h-full bg-brand-950 rounded-2xl flex items-center justify-center">
+                <span class="text-accent-cyan text-xl font-bold tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">ASV</span>
+              </div>
+            </div>
+            <div>
+              <div class="text-2xl font-semibold tracking-tighter text-white" style="font-family: 'Space Grotesk', sans-serif;">aispherevision</div>
+              <div class="text-[10px] text-white/40 -mt-1 tracking-[3px]">.COM</div>
+            </div>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+            <a href="#vision" class="nav-link text-white/80 hover:text-white no-underline">The Vision</a>
+            <a href="#why" class="nav-link text-white/80 hover:text-white no-underline">Why This Domain</a>
+            <a href="#opportunity" class="nav-link text-white/80 hover:text-white no-underline">The Opportunity</a>
+            <a href="#pricing" class="nav-link text-white/80 hover:text-white no-underline">Pricing</a>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex items-center gap-x-3">
+            <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+               class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-2xl border border-white/20 hover:bg-white/5 transition-colors text-white no-underline">
+              Inquire
+            </a>
+            <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+               class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-2xl bg-white text-brand-950 hover:bg-white/90 transition-all active:scale-[0.985] no-underline">
+              Secure Now
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn"
+                    class="md:hidden w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors bg-transparent border-0 cursor-pointer"
+                    aria-label="Toggle menu">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-brand-950 pt-20">
+      <div class="px-6 py-8 flex flex-col gap-y-6 text-lg font-medium">
+        <a href="#vision" class="mobile-nav-link py-2 text-white/80 hover:text-white no-underline">The Vision</a>
+        <a href="#why" class="mobile-nav-link py-2 text-white/80 hover:text-white no-underline">Why This Domain</a>
+        <a href="#opportunity" class="mobile-nav-link py-2 text-white/80 hover:text-white no-underline">The Opportunity</a>
+        <a href="#pricing" class="mobile-nav-link py-2 text-white/80 hover:text-white no-underline">Pricing</a>
+        <div class="pt-4 border-t border-white/10">
+          <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+             class="block w-full text-center py-3.5 rounded-2xl bg-white text-brand-950 font-semibold no-underline">
+            Secure This Domain
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-white/10 mt-20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Sophisticated CTA Section -->
+        <div class="glass rounded-3xl p-10 md:p-14 border border-white/10 text-center mb-12">
+          <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-accent-cyan/20 bg-accent-cyan/5 mb-6">
+            <div class="w-1.5 h-1.5 bg-accent-cyan rounded-full animate-pulse"></div>
+            <span class="text-xs font-semibold tracking-[1.5px] text-accent-cyan">DOMAIN AVAILABLE FOR ACQUISITION</span>
+          </div>
+
+          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-4" style="font-family: 'Space Grotesk', sans-serif;">
+            Secure This Vision — Own the Name
+          </h2>
+
+          <p class="text-brand-400 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
+            <strong class="text-white">aispherevision.com</strong> is available for acquisition by
+            serious buyers and organizations seeking a distinctive, high-potential digital asset at the
+            intersection of artificial intelligence and human foresight. Pricing and terms available
+            upon request for qualified inquiries.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+               class="cta-primary text-lg no-underline">
+              <span>Contact: sales@desertrich.com</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
+              </svg>
+            </a>
+          </div>
+
+          <p class="mt-6 text-xs text-brand-500">Serious buyers only. Flexible terms available. Escrow-protected transactions.</p>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="text-center text-brand-500 text-xs leading-relaxed max-w-3xl mx-auto space-y-1">
+          <p>
+            This website is for demonstration and informational purposes only.
+            It does not constitute an offer of services, a commitment to deploy,
+            or a guarantee of outcomes.
+          </p>
+          <p>
+            All statistics, projections, and references to specific technologies
+            are based on publicly available information as of {dateDisplay} and are subject to change.
+          </p>
+          <p class="mt-3 text-brand-600">
+            &copy; {currentYear} aispherevision.com. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Site Scripts -->
+    <script>
+      // Navbar scroll behavior
+      function initNavbar() {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            navbar.classList.add('nav-scrolled');
+          } else {
+            navbar.classList.remove('nav-scrolled');
+          }
+        });
+      }
+
+      // Mobile menu toggle
+      function initMobileMenu() {
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        if (!btn || !menu) return;
+
+        const links = menu.querySelectorAll('.mobile-nav-link');
+
+        btn.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+          const icon = btn.querySelector('svg');
+          if (icon) {
+            if (!menu.classList.contains('hidden')) {
+              icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6h12v12" />';
+            } else {
+              icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+            }
+          }
+        });
+
+        links.forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            const icon = btn.querySelector('svg');
+            if (icon) {
+              icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+            }
+          });
+        });
+      }
+
+      // Smooth scroll for anchor links
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href')?.substring(1);
+            if (!targetId) return;
+            const target = document.getElementById(targetId);
+            if (target) {
+              e.preventDefault();
+              const offset = 80;
+              const elementPosition = target.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - offset;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+          });
+        });
+      }
+
+      // Keyboard accessibility
+      function initKeyboardControls() {
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            const menu = document.getElementById('mobile-menu');
+            if (menu && !menu.classList.contains('hidden')) {
+              menu.classList.add('hidden');
+              const btn = document.getElementById('mobile-menu-btn');
+              if (btn) {
+                const icon = btn.querySelector('svg');
+                if (icon) {
+                  icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Initialize everything
+      document.addEventListener('DOMContentLoaded', () => {
+        initNavbar();
+        initMobileMenu();
+        initSmoothScroll();
+        initKeyboardControls();
+      });
+    </script>
+  </body>
+</html>
