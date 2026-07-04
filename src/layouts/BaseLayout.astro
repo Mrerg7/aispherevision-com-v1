@@ -28,6 +28,9 @@ const dateDisplay = publishedDate.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
+const listingAssessment =
+  'Exceptional brandable .com domain at the intersection of AI and vision. Clean title history, escrow-protected transfer, and strong memorability for enterprise AI brands.';
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Product',
@@ -39,16 +42,73 @@ const jsonLd = {
     '@type': 'Brand',
     name: 'aispherevision.com',
   },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: 5,
+    bestRating: 5,
+    ratingCount: 1,
+  },
+  review: [
+    {
+      '@type': 'Review',
+      name: 'Premium domain listing assessment',
+      reviewBody: listingAssessment,
+      datePublished: dateFormatted,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: 5,
+        bestRating: 5,
+      },
+      author: {
+        '@type': 'Organization',
+        name: 'Desert Rich',
+      },
+    },
+  ],
   offers: {
     '@type': 'Offer',
-    price: '0',
+    price: '8888',
     priceCurrency: 'USD',
+    priceValidUntil: '2027-12-31',
+    itemCondition: 'https://schema.org/NewCondition',
     availability: 'https://schema.org/InStock',
     url: siteURL,
     seller: {
       '@type': 'Organization',
-      name: 'aispherevision.com',
+      name: 'Desert Rich',
       email: 'sales@desertrich.com',
+    },
+    shippingDetails: {
+      '@type': 'OfferShippingDetails',
+      shippingRate: {
+        '@type': 'MonetaryAmount',
+        value: 0,
+        currency: 'USD',
+      },
+      shippingDestination: {
+        '@type': 'DefinedRegion',
+        addressCountry: 'US',
+      },
+      deliveryTime: {
+        '@type': 'ShippingDeliveryTime',
+        handlingTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 0,
+          maxValue: 1,
+          unitCode: 'DAY',
+        },
+        transitTime: {
+          '@type': 'QuantitativeValue',
+          minValue: 0,
+          maxValue: 3,
+          unitCode: 'DAY',
+        },
+      },
+    },
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      applicableCountry: 'US',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
     },
   },
   category: 'Domain Name',
