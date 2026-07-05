@@ -32,6 +32,10 @@ function getCanonicalRedirect(request) {
 async function serveAsset(request, env) {
   const url = new URL(request.url);
 
+  if (url.pathname === '/index.html') {
+    return Response.redirect(new URL(`/${url.search}`, CANONICAL_ORIGIN).href, 301);
+  }
+
   if (url.pathname === '/' || url.pathname === '') {
     return env.ASSETS.fetch(new Request(new URL('/index.html', url.origin), request));
   }
