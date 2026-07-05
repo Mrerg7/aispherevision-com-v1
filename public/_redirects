@@ -1,19 +1,1 @@
-# Canonical host: https://aispherevision.com/
-
-# HTTP → HTTPS (apex)
-http://aispherevision.com https://aispherevision.com/ 301
-http://aispherevision.com/* https://aispherevision.com/:splat 301
-
-# HTTP → HTTPS (www)
-http://www.aispherevision.com https://aispherevision.com/ 301
-http://www.aispherevision.com/* https://aispherevision.com/:splat 301
-
-# www → apex (HTTPS)
-https://www.aispherevision.com https://aispherevision.com/ 301
-https://www.aispherevision.com/* https://aispherevision.com/:splat 301
-
-# Apex without trailing slash
-https://aispherevision.com https://aispherevision.com/ 301
-
-# /index.html → /
 /index.html / 301
