@@ -7,7 +7,7 @@ export default {
       return Response.redirect(redirectUrl, 301);
     }
 
-    return env.ASSETS.fetch(request);
+    return serveAsset(request, env);
   },
 };
 
@@ -27,4 +27,14 @@ function getCanonicalRedirect(request) {
 
   const path = url.pathname === '/' ? '/' : url.pathname;
   return new URL(`${path}${url.search}`, CANONICAL_ORIGIN).href;
+}
+
+async function serveAsset(request, env) {
+  const url = new URL(request.url);
+
+  if (url.pathname === '/' || url.pathname === '') {
+    return env.ASSETS.fetch(new Request(new URL('/index.html', url.origin), request));
+  }
+
+  return env.ASSETS.fetch(request);
 }
