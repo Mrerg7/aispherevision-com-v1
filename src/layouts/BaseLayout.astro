@@ -5,7 +5,6 @@ export interface Props {
   title: string;
   description: string;
   image?: string;
-  canonicalURL?: string;
   publishedDate?: Date;
 }
 
@@ -13,12 +12,12 @@ const {
   title,
   description,
   image = 'https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/b6e2b8be-832a-4a78-4c2f-05384bed6700/public',
-  canonicalURL = 'https://aispherevision.com/',
   publishedDate = new Date(),
 } = Astro.props;
 
 const siteName = 'aispherevision.com';
-const siteURL = 'https://aispherevision.com';
+const siteURL = 'https://aispherevision.com/';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? siteURL).href;
 const ogImage = image;
 const currentYear = new Date().getFullYear();
 const dateFormatted = publishedDate.toISOString().split('T')[0];
