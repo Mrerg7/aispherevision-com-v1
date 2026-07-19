@@ -130,6 +130,8 @@ const jsonLd = {
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -184,7 +186,7 @@ const jsonLd = {
             </div>
             <div>
               <div class="text-2xl font-semibold tracking-tighter text-white" style="font-family: 'Space Grotesk', sans-serif;">aispherevision</div>
-              <div class="text-[10px] text-white/40 -mt-1 tracking-[3px]">.COM</div>
+              <div class="text-xs text-white/40 -mt-1 tracking-[3px]">.COM</div>
             </div>
           </a>
 
@@ -209,7 +211,7 @@ const jsonLd = {
 
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn"
-                    class="md:hidden w-10 h-10 flex items-center justify-center text-white/70 hover:text-white transition-colors bg-transparent border-0 cursor-pointer"
+                    class="md:hidden w-12 h-12 flex items-center justify-center text-white/70 hover:text-white transition-colors bg-transparent border-0 cursor-pointer"
                     aria-label="Toggle menu">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
