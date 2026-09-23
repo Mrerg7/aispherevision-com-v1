@@ -1,6 +1,7 @@
 ---
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { faqs } from '../data/faqs';
 
 const page = await getEntry('pages', 'home');
 
@@ -45,16 +46,16 @@ const publishedDate = page?.data.publishedDate;
 
       <!-- CTAs -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+        <a href="#inquire"
            class="cta-primary text-lg no-underline">
           <span>Secure This Vision</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
           </svg>
         </a>
-        <a href="#vision"
+        <a href="#pricing"
            class="w-full sm:w-auto inline-flex items-center justify-center gap-x-2 px-8 py-4 text-lg font-medium rounded-3xl border border-white/20 hover:bg-white/5 transition-colors text-white no-underline">
-          Explore the Meaning
+          View Price &amp; Offer
         </a>
       </div>
 
@@ -251,17 +252,29 @@ const publishedDate = page?.data.publishedDate;
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
               </svg>
-              <span>Escrow.com protected transaction</span>
+              <span>
+                <a href="https://www.escrow.com/" target="_blank" rel="noopener noreferrer nofollow" class="text-white/90 underline hover:text-accent-cyan">Escrow.com</a> protected transaction
+              </span>
+            </div>
+            <div class="flex items-center gap-x-2 text-white/70">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>Instant transfer, 1–3 days</span>
             </div>
           </div>
         </div>
 
-        <div class="md:text-right">
-          <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+        <div class="md:text-right flex flex-col items-stretch gap-3">
+          <a href="#inquire"
              class="inline-flex w-full md:w-auto items-center justify-center px-10 py-4 rounded-3xl bg-white font-semibold text-brand-950 text-lg active:scale-[0.985] transition-all hover:bg-white/90 no-underline">
-            Begin Acquisition
+            Buy Now — Begin Acquisition
           </a>
-          <p class="text-xs text-white/50 mt-3 md:mt-2">Serious buyers only. Flexible terms available.</p>
+          <a href="#inquire"
+             class="inline-flex w-full md:w-auto items-center justify-center px-10 py-3.5 rounded-3xl border border-white/25 font-medium text-white text-base hover:bg-white/5 transition-colors no-underline">
+            Make an Offer
+          </a>
+          <p class="text-xs text-white/50 mt-1">Serious buyers only. Flexible terms available.</p>
         </div>
       </div>
     </div>
@@ -283,33 +296,161 @@ const publishedDate = page?.data.publishedDate;
     </div>
   </section>
 
-  <!-- Final CTA Section -->
-  <section class="max-w-3xl mx-auto px-6 pb-16 text-center">
-    <div class="glass rounded-3xl p-10 md:p-14 border border-accent-cyan/20">
+  <!-- FAQ Section -->
+  <section id="faq" class="max-w-3xl mx-auto px-6 py-16 border-t border-white/10">
+    <div class="text-center mb-10">
+      <div class="inline-block px-4 py-1 rounded-full bg-white/5 text-xs tracking-[1.5px] font-medium text-white/60 mb-3">FREQUENTLY ASKED QUESTIONS</div>
+      <h2 class="section-heading tracking-[-0.03em] text-white">Everything you need to know.</h2>
+      <p class="mt-4 text-white/60">Clear answers on price, transfer, and how to acquire aispherevision.com.</p>
+    </div>
+
+    <div class="space-y-3">
+      {faqs.map((faq) => (
+        <details class="faq-item glass rounded-2xl border border-white/10 group">
+          <summary class="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer text-white font-medium list-none">
+            <span>{faq.question}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0 text-accent-cyan transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+          </summary>
+          <p class="px-6 pb-5 -mt-1 text-white/70 leading-relaxed">{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Inquiry Form Section -->
+  <section id="inquire" class="max-w-3xl mx-auto px-6 pb-16 text-center scroll-mt-24">
+    <div class="glass rounded-3xl p-8 md:p-14 border border-accent-cyan/20">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-white mb-4" style="font-family: 'Space Grotesk', sans-serif;">
         Ready to claim the vision?
       </h2>
       <p class="text-white/70 mb-8 max-w-md mx-auto">
-        Submit your inquiry below. We respond to all serious inquiries within 24 hours.
+        Tell us who you are and what you&rsquo;re offering. We respond to all serious inquiries within 24 hours.
       </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
-           class="cta-primary no-underline">
-          <span>Inquire About Acquisition</span>
+
+      <form id="inquiry-form" class="text-left space-y-4" novalidate>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label for="inq-name" class="block text-xs font-medium text-white/60 mb-1.5">Your name</label>
+            <input id="inq-name" name="name" type="text" required autocomplete="name" placeholder="Jane Founder"
+                   class="form-input w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder:text-white/30 text-sm" />
+          </div>
+          <div>
+            <label for="inq-email" class="block text-xs font-medium text-white/60 mb-1.5">Email</label>
+            <input id="inq-email" name="email" type="email" required autocomplete="email" placeholder="jane@company.com"
+                   class="form-input w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder:text-white/30 text-sm" />
+          </div>
+        </div>
+        <div>
+          <label for="inq-offer" class="block text-xs font-medium text-white/60 mb-1.5">Your offer (USD, optional)</label>
+          <input id="inq-offer" name="offer" type="text" inputmode="numeric" placeholder="8,888 or best offer"
+                 class="form-input w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder:text-white/30 text-sm" />
+        </div>
+        <div>
+          <label for="inq-message" class="block text-xs font-medium text-white/60 mb-1.5">Message</label>
+          <textarea id="inq-message" name="message" rows="4" required
+                    placeholder="Intended use, timeline, or any questions about the transfer…"
+                    class="form-input w-full px-4 py-3 rounded-2xl bg-white/5 border border-white/15 text-white placeholder:text-white/30 text-sm resize-y"></textarea>
+        </div>
+        <div aria-hidden="true" class="hidden">
+          <label for="inq-website">Website</label>
+          <input id="inq-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+        </div>
+        <button type="submit"
+                class="cta-primary w-full text-base no-underline">
+          <span>Send Inquiry</span>
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
           </svg>
-        </a>
-      </div>
-      <p class="mt-6 text-xs text-white/50">Your information is kept confidential. We use secure escrow for all transactions.</p>
+        </button>
+        <p id="form-status" class="hidden text-sm text-accent-cyan text-center" role="status" aria-live="polite"></p>
+        <p class="text-xs text-white/50 text-center">
+          Your information is kept confidential. Prefer email?
+          <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry" class="text-white/70 underline hover:text-accent-cyan">sales@desertrich.com</a>
+        </p>
+      </form>
     </div>
   </section>
 
   <!-- Trust Bar -->
   <div class="border-t border-white/10 py-5">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-y-3 text-xs text-white/50">
-      <div>Transactions secured via <span class="font-medium text-white/70">Escrow.com</span> • Premium domain brokerage</div>
+      <div>Transactions secured via <a href="https://www.escrow.com/" target="_blank" rel="noopener noreferrer nofollow" class="font-medium text-white/70 underline hover:text-accent-cyan">Escrow.com</a> • Premium domain brokerage</div>
       <div>&copy; 2026 aispherevision.com • All rights reserved</div>
     </div>
   </div>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="mobile-cta-bar md:hidden">
+    <div class="flex items-center gap-3 w-full max-w-lg mx-auto">
+      <div class="shrink-0">
+        <div class="text-[10px] uppercase tracking-widest text-white/40">aispherevision.com</div>
+        <div class="font-semibold text-white leading-tight">$8,888 <span class="text-white/40 text-xs font-normal">USD</span></div>
+      </div>
+      <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+         class="shrink-0 px-4 py-2.5 rounded-2xl border border-white/20 text-white text-sm font-medium no-underline">
+        Email
+      </a>
+      <a href="#inquire"
+         class="flex-1 py-2.5 rounded-2xl bg-gradient-to-r from-accent-cyan to-accent-violet text-brand-950 text-sm font-semibold text-center no-underline">
+        Inquire to Buy
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function initInquiryForm() {
+      const form = document.getElementById('inquiry-form');
+      const status = document.getElementById('form-status');
+      if (!(form instanceof HTMLFormElement) || !(status instanceof HTMLElement)) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const honeypot = form.querySelector<HTMLInputElement>('input[name="website"]');
+        if (honeypot?.value) return;
+
+        const data = new FormData(form);
+        const name = String(data.get('name') ?? '').trim();
+        const email = String(data.get('email') ?? '').trim();
+        const offer = String(data.get('offer') ?? '').trim();
+        const message = String(data.get('message') ?? '').trim();
+
+        if (!name || !email || !message) {
+          status.textContent = 'Please fill in your name, email, and message.';
+          status.classList.remove('hidden', 'text-accent-cyan');
+          status.classList.add('text-red-400');
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          status.textContent = 'Please enter a valid email address.';
+          status.classList.remove('hidden', 'text-accent-cyan');
+          status.classList.add('text-red-400');
+          return;
+        }
+
+        const subject = offer
+          ? `aispherevision.com Acquisition Inquiry — Offer $${offer}`
+          : 'aispherevision.com Acquisition Inquiry';
+        const body = [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          offer ? `Offer: $${offer} USD` : 'Offer: Open to listed price',
+          '',
+          message,
+          '',
+          '— Sent from aispherevision.com',
+        ].join('\n');
+
+        status.classList.remove('hidden', 'text-red-400');
+        status.classList.add('text-accent-cyan');
+        status.textContent = 'Opening your email app — if nothing happens, email sales@desertrich.com directly.';
+
+        window.location.href = `mailto:sales@desertrich.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      });
+    }
+
+    initInquiryForm();
+  </script>
 </BaseLayout>

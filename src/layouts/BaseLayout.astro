@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { faqs } from '../data/faqs';
 
 export interface Props {
   title: string;
@@ -20,97 +21,100 @@ const siteURL = 'https://aispherevision.com/';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? siteURL).href;
 const ogImage = image;
 const currentYear = new Date().getFullYear();
-const dateFormatted = publishedDate.toISOString().split('T')[0];
-const dateDisplay = publishedDate.toLocaleDateString('en-US', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
-
-const listingAssessment =
-  'Exceptional brandable .com domain at the intersection of AI and vision. Clean title history, escrow-protected transfer, and strong memorability for enterprise AI brands.';
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Product',
-  name: 'aispherevision.com — Premium AI Domain',
-  description: description,
-  image: ogImage,
-  url: siteURL,
-  brand: {
-    '@type': 'Brand',
-    name: 'aispherevision.com',
-  },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: 5,
-    bestRating: 5,
-    ratingCount: 1,
-  },
-  review: [
+  '@graph': [
     {
-      '@type': 'Review',
-      name: 'Premium domain listing assessment',
-      reviewBody: listingAssessment,
-      datePublished: dateFormatted,
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: 5,
-        bestRating: 5,
+      '@type': 'WebSite',
+      '@id': `${siteURL}#website`,
+      url: siteURL,
+      name: siteName,
+      description: description,
+      inLanguage: 'en',
+      publisher: { '@id': `${siteURL}#organization` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteURL}#organization`,
+      name: 'Desert Rich',
+      url: 'https://desertrich.com/',
+      email: 'sales@desertrich.com',
+      description: 'Premium domain name brokerage specializing in brandable .com domains.',
+      areaServed: 'US',
+    },
+    {
+      '@type': 'Product',
+      '@id': `${siteURL}#product`,
+      name: 'aispherevision.com — Premium AI Domain',
+      description: description,
+      image: ogImage,
+      url: siteURL,
+      category: 'Domain Name',
+      brand: {
+        '@type': 'Brand',
+        name: 'aispherevision.com',
       },
-      author: {
-        '@type': 'Organization',
-        name: 'Desert Rich',
+      offers: {
+        '@type': 'Offer',
+        price: '8888',
+        priceCurrency: 'USD',
+        priceValidUntil: '2027-12-31',
+        itemCondition: 'https://schema.org/NewCondition',
+        availability: 'https://schema.org/InStock',
+        url: siteURL,
+        seller: {
+          '@type': 'Organization',
+          name: 'Desert Rich',
+          email: 'sales@desertrich.com',
+        },
+        shippingDetails: {
+          '@type': 'OfferShippingDetails',
+          shippingRate: {
+            '@type': 'MonetaryAmount',
+            value: 0,
+            currency: 'USD',
+          },
+          shippingDestination: {
+            '@type': 'DefinedRegion',
+            addressCountry: 'US',
+          },
+          deliveryTime: {
+            '@type': 'ShippingDeliveryTime',
+            handlingTime: {
+              '@type': 'QuantitativeValue',
+              minValue: 0,
+              maxValue: 1,
+              unitCode: 'DAY',
+            },
+            transitTime: {
+              '@type': 'QuantitativeValue',
+              minValue: 0,
+              maxValue: 3,
+              unitCode: 'DAY',
+            },
+          },
+        },
+        hasMerchantReturnPolicy: {
+          '@type': 'MerchantReturnPolicy',
+          applicableCountry: 'US',
+          returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+        },
       },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${siteURL}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
     },
   ],
-  offers: {
-    '@type': 'Offer',
-    price: '8888',
-    priceCurrency: 'USD',
-    priceValidUntil: '2027-12-31',
-    itemCondition: 'https://schema.org/NewCondition',
-    availability: 'https://schema.org/InStock',
-    url: siteURL,
-    seller: {
-      '@type': 'Organization',
-      name: 'Desert Rich',
-      email: 'sales@desertrich.com',
-    },
-    shippingDetails: {
-      '@type': 'OfferShippingDetails',
-      shippingRate: {
-        '@type': 'MonetaryAmount',
-        value: 0,
-        currency: 'USD',
-      },
-      shippingDestination: {
-        '@type': 'DefinedRegion',
-        addressCountry: 'US',
-      },
-      deliveryTime: {
-        '@type': 'ShippingDeliveryTime',
-        handlingTime: {
-          '@type': 'QuantitativeValue',
-          minValue: 0,
-          maxValue: 1,
-          unitCode: 'DAY',
-        },
-        transitTime: {
-          '@type': 'QuantitativeValue',
-          minValue: 0,
-          maxValue: 3,
-          unitCode: 'DAY',
-        },
-      },
-    },
-    hasMerchantReturnPolicy: {
-      '@type': 'MerchantReturnPolicy',
-      applicableCountry: 'US',
-      returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
-    },
-  },
-  category: 'Domain Name',
 };
 ---
 
@@ -125,8 +129,12 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="robots" content="index, follow" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
     <meta name="google-site-verification" content="AEkgiy2Ho2fOMn6lz7o--2gUdi2k04X-GxIcOGif-RY" />
+    <meta name="theme-color" content="#0a0a0f" />
 
     <!-- Canonical -->
     <link rel="canonical" href={canonicalURL} />
@@ -166,6 +174,9 @@ const jsonLd = {
     <link rel="preconnect" href="https://imagedelivery.net" />
     <link rel="dns-prefetch" href="https://imagedelivery.net" />
 
+    <!-- LCP: preload hero/OG image -->
+    <link rel="preload" as="image" href={ogImage} />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -196,15 +207,16 @@ const jsonLd = {
             <a href="#why" class="nav-link text-white/80 hover:text-white no-underline">Why This Domain</a>
             <a href="#opportunity" class="nav-link text-white/80 hover:text-white no-underline">The Opportunity</a>
             <a href="#pricing" class="nav-link text-white/80 hover:text-white no-underline">Pricing</a>
+            <a href="#faq" class="nav-link text-white/80 hover:text-white no-underline">FAQ</a>
           </div>
 
           <!-- CTA Buttons -->
           <div class="flex items-center gap-x-3">
-            <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+            <a href="#inquire"
                class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-2xl border border-white/20 hover:bg-white/5 transition-colors text-white no-underline">
               Inquire
             </a>
-            <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+            <a href="#inquire"
                class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-2xl bg-white text-brand-950 hover:bg-white/90 transition-all active:scale-[0.985] no-underline">
               Secure Now
             </a>
@@ -229,8 +241,9 @@ const jsonLd = {
         <a href="#why" class="mobile-nav-link py-2 text-white/80 hover:text-white no-underline">Why This Domain</a>
         <a href="#opportunity" class="mobile-nav-link py-2 text-white/80 hover:text-white no-underline">The Opportunity</a>
         <a href="#pricing" class="mobile-nav-link py-2 text-white/80 hover:text-white no-underline">Pricing</a>
+        <a href="#faq" class="mobile-nav-link py-2 text-white/80 hover:text-white no-underline">FAQ</a>
         <div class="pt-4 border-t border-white/10">
-          <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+          <a href="#inquire"
              class="block w-full text-center py-3.5 rounded-2xl bg-white text-brand-950 font-semibold no-underline">
             Secure This Domain
           </a>
@@ -245,7 +258,7 @@ const jsonLd = {
 
     <!-- Footer -->
     <footer class="w-full border-t border-white/10 mt-20">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 pb-28 md:pb-16">
         <!-- Sophisticated CTA Section -->
         <div class="glass rounded-3xl p-10 md:p-14 border border-white/10 text-center mb-12">
           <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full border border-accent-cyan/20 bg-accent-cyan/5 mb-6">
@@ -265,28 +278,34 @@ const jsonLd = {
           </p>
 
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
-               class="cta-primary text-lg no-underline">
-              <span>Contact: sales@desertrich.com</span>
+            <a href="#inquire" class="cta-primary text-lg no-underline">
+              <span>Inquire About Acquisition</span>
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.25" d="M14 5l7 7-7 7m-4-7h11" />
               </svg>
             </a>
+            <a href="mailto:sales@desertrich.com?subject=aispherevision.com%20Acquisition%20Inquiry"
+               class="inline-flex items-center justify-center px-7 py-3.5 text-base font-medium rounded-3xl border border-white/20 hover:bg-white/5 transition-colors text-white no-underline">
+              Email sales@desertrich.com
+            </a>
           </div>
 
-          <p class="mt-6 text-xs text-brand-500">Serious buyers only. Flexible terms available. Escrow-protected transactions.</p>
+          <p class="mt-6 text-xs text-brand-500">
+            Serious buyers only. Flexible terms available. Transactions protected by
+            <a href="https://www.escrow.com/" target="_blank" rel="noopener noreferrer nofollow" class="text-brand-400 underline hover:text-accent-cyan">Escrow.com</a>.
+          </p>
         </div>
 
         <!-- Disclaimer -->
         <div class="text-center text-brand-500 text-xs leading-relaxed max-w-3xl mx-auto space-y-1">
           <p>
-            This website is for demonstration and informational purposes only.
-            It does not constitute an offer of services, a commitment to deploy,
-            or a guarantee of outcomes.
+            Listed by
+            <a href="https://desertrich.com/" target="_blank" rel="noopener noreferrer" class="text-brand-400 underline hover:text-accent-cyan">Desert Rich</a>,
+            a premium domain brokerage. All information on this site is provided in connection with the
+            sale of the domain name aispherevision.com and does not constitute legal or investment advice.
           </p>
           <p>
-            All statistics, projections, and references to specific technologies
-            are based on publicly available information as of {dateDisplay} and are subject to change.
+            Offer details, pricing, and availability are subject to change until confirmed in writing.
           </p>
           <p class="mt-3 text-brand-600">
             &copy; {currentYear} aispherevision.com. All rights reserved.
